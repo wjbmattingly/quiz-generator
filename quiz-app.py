@@ -13,7 +13,9 @@ def create_new_quiz(num_questions, file_name):
     
         with open (file_name, "w") as f:
             json.dump(new_quiz, f, indent=4)
-
+            
+            
+st.title("JupyterQuiz Generator")
 main_option = st.sidebar.selectbox("New vs. Old Quiz", ["Create a New Quiz", "Work with an Existing Quiz"])
 
 if main_option == "Create a New Quiz":
@@ -25,7 +27,7 @@ if main_option == "Create a New Quiz":
         create_new_quiz(num_questions, file_name)
 
 else:
-    st.title("JupyterQuiz Developer")
+ 
     
     #Get all the Quizzes Loaded in the Temp_Quizzes Directory
     quizzes = glob.glob("temp_quizzes/*.json")
