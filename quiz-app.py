@@ -7,8 +7,8 @@ def create_new_quiz(num_questions, file_name):
     for i in range(num_questions):
         
         new_quiz[f"Question {i+1}"] = {"question": "",
-                                                     "type": "",
-                                                    "answers": ""
+                                        "type": "",
+                                        "answers": ""
                                       }
     
         with open (file_name, "w") as f:
@@ -46,7 +46,10 @@ else:
     #And they can select the number of answers the current question will have. This gets around the limitations of nested
     #forms in Streamlit
     st.sidebar.header("Question Params")
-    question_type = st.sidebar.selectbox("Type of Question", ["multiple_choice", "many_choice", "numeric"])
+    question_type = st.sidebar.selectbox("Type of Question",
+                                         ["multiple_choice", "many_choice", "numeric"]
+                                        )
+    
     num_answers = st.sidebar.slider("Number of Potential Answers", 1, 5)
     
     #This allows us to store in ST's session state the current question we are on
