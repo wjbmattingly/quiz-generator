@@ -1,0 +1,44 @@
+{
+    "Question 1": {
+        "question": "",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "",
+                "correct": true,
+                "feedback": ""
+            }
+        ]
+    },
+    "Question 2": {
+        "question": "",
+        "type": "many_choice",
+        "answers": [
+            {
+                "answer": "",
+                "correct": true,
+                "feedback": ""
+            },
+            {
+                "answer": "",
+                "correct": true,
+                "feedback": ""
+            }
+        ]
+    },
+    "Question 3": {
+        "question": "",
+        "type": "",
+        "answers": ""
+    },
+    "Question 4": {
+        "question": "",
+        "type": "",
+        "answers": ""
+    },
+    "Question 5": {
+        "question": "",
+        "type": "",
+        "answers": ""
+    }
+}

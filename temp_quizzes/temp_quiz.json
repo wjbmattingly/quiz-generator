@@ -1,0 +1,49 @@
+{
+    "Question 1": {
+        "question": "What data structure is made with a []",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "List",
+                "correct": true,
+                "feedback": ""
+            },
+            {
+                "answer": "Dictionary",
+                "correct": true,
+                "feedback": ""
+            },
+            {
+                "answer": "Tuple",
+                "correct": true,
+                "feedback": ""
+            }
+        ]
+    },
+    "Question 2": {
+        "question": "What type of data structure is started with {}",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "List",
+                "correct": false,
+                "feedback": ""
+            },
+            {
+                "answer": "Dictionary",
+                "correct": true,
+                "feedback": ""
+            },
+            {
+                "answer": "Tuple",
+                "correct": false,
+                "feedback": ""
+            },
+            {
+                "answer": "Integer",
+                "correct": false,
+                "feedback": ""
+            }
+        ]
+    }
+}
