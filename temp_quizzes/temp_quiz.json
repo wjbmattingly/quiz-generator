@@ -12,11 +12,6 @@
                 "answer": "Dictionary",
                 "correct": true,
                 "feedback": ""
-            },
-            {
-                "answer": "Tuple",
-                "correct": true,
-                "feedback": ""
             }
         ]
     },
@@ -42,6 +37,22 @@
             {
                 "answer": "Integer",
                 "correct": false,
+                "feedback": ""
+            }
+        ]
+    },
+    "Question 3": {
+        "question": "",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "",
+                "correct": true,
+                "feedback": ""
+            },
+            {
+                "answer": "",
+                "correct": true,
                 "feedback": ""
             }
         ]
