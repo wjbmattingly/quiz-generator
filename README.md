@@ -10,7 +10,8 @@ Currently only multiple_choice and any_choice are supported.
 
 Checkout the repository.
 From within the repository:
-Using `pip`: `pip install -r requirements.txt
+
+Using `pip`: `pip install -r requirements.txt`
 
 Using `poetry`: `poetry install`
 
