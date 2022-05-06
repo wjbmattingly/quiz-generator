@@ -20,9 +20,9 @@ main_option = st.sidebar.selectbox("New vs. Old Quiz", ["Create a New Quiz", "Wo
 
 if main_option == "Create a New Quiz":
     new_quiz_form = st.form("New Quiz")
-    num_questions = new_quiz_form.slider("Number of Questions", 1,10)
+    num_questions = new_quiz_form.slider("Number of Questions", 1, 10)
     file_name = new_quiz_form.text_input("Type Your File Name")
-    file_name = f"temp_quizzes/{file_name}.json"
+    file_name = f"temp_quizzes/{file_name.replace('.json', '')}.json"
     if new_quiz_form.form_submit_button():
         create_new_quiz(num_questions, file_name)
 
@@ -91,10 +91,9 @@ else:
                 temp_feedback = main_quiz.text_input(f"Feedback Text",
                                                      quiz_data[f"Question {current_question}"]["answers"][x]["feedback"],
                                                      key=f"feedback_{x+1}")
-            #If a usere is trying to add questions to an existing quiz, there will be an index error. In this case, we simply populate the fields
-            #with empty space
-            except:
-                IndexError
+            # If a user is trying to add questions to an existing quiz, there will be an index error.
+            # In this case, we simply populate the fields with empty space
+            except IndexError:
                 temp_answer = main_quiz.text_input(f"Answer Text",
                                                    key=f"answer_{x+1}")
 
@@ -123,7 +122,7 @@ else:
             main_quiz.write("<br>", unsafe_allow_html=True)
     
     #This submits the current question and answer data from the form
-    submit = main_quiz.form_submit_button(f"Submit {current_question}")
+    submit = main_quiz.form_submit_button(f"Save edit")
     if submit:
         #we iterate through the different answers for this question and grab the unique session state key
         #for each part of each answer. We then recreate this as JupyterQuiz formatted data.
@@ -131,22 +130,26 @@ else:
         for x in range(num_answers):
             answer_data = {"answer": st.session_state[f"answer_{x+1}"],
                            "correct": st.session_state[f"correct_{x+1}"],
-                          "feedback": st.session_state[f"feedback_{x+1}"],
-
+                           "feedback": st.session_state[f"feedback_{x+1}"],
                           }
             temp_answers.append(answer_data)
         
         #We now add this to our main quiz_data dictionary to the corresponding question.
         quiz_data[f"Question {current_question}"] = {"question": temp_question,
                                                      "type": question_type,
-                                                    "answers": temp_answers
-                                                            }
+                                                     "answers": temp_answers
+                                                    }
         
         #We need to still restructure the data into JupyterQuiz format as a list, rather than a dictionary with each
         #Question as a key
         final_quiz = []
-        for item in quiz_data:
-            final_quiz.append(quiz_data[item])
+        # Only write up to num_questions to final file
+        # Reason: if you, while editing, add a question and
+        # then remove it, it still is in the final file.
+        # Possibly, there is a better way to solve this.
+        for k, v in quiz_data.items():
+            if int(k.split(" ")[1]) <= num_questions:
+                final_quiz.append(v)
 
         #We store 2 different files: one for the temp quizzes, used by the app
         #The second for final quizzes that can be imported into JupyterQuiz
@@ -155,4 +158,4 @@ else:
             json.dump(quiz_data, f, indent=4)
 
         with open (quiz_file.replace("temp_quizzes", "final_quizzes"), "w") as f:
-            json.dump(quiz_data, f, indent=4)
+            json.dump(final_quiz, f, indent=4)
